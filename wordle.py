@@ -17,7 +17,7 @@ with open(f'{wordlength}LetterFreq.txt', 'r') as csvfile:
         frequency = line
         break
 
-def test(game, word, guess = 'raise', j = 0, result = []):
+def helper(game, word, guess = 'raise', j = 0, result = []):
     # print(guess)
     j+=1
     temp = defaultdict(int)
@@ -54,24 +54,23 @@ def test(game, word, guess = 'raise', j = 0, result = []):
                 print(item)
             return None
 
-        test(game, word, nextGuess, j, result)
+        helper(game, word, nextGuess, j, result)
 
     else:
-        if j > 6:
+        if j > 0:
             print(j)
             print(word)
             for item in result:
                 print(item)
         hist[j] += 1
-# game = WordleAI(wordlist.copy(), frequency.copy(), wordlength)
-# for word in frequency:
-#     test(game, word, 'facet', 0, [])
-#     game.reset(frequency.copy())
-#     if word == 'murky':
-#         break
 game = WordleAI(wordlist.copy(), frequency.copy(), wordlength)
-test(game, 'wives', 'facet')
+for word in frequency:
+    helper(game, word, 'rates', 0, [])
+    game.reset(frequency.copy())
+    if word == 'murky':
+        break
+# game = WordleAI(wordlist.copy(), frequency.copy(), wordlength)
+# helper(game, 'wives', 'facet')
 
 
-
-# print(hist)
+print(hist)

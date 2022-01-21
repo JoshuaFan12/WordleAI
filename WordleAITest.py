@@ -36,7 +36,7 @@ class WordleAI:
         suggestion = self.suggest()
         # print(suggestion[:min(5,len(suggestion))])
         # print(self.info.words)
-        if len(wordFreq) > 19 and suggestion[0][0] != '?':
+        if len(wordFreq) > 49 and suggestion[0][0] != '?':
             return suggestion[0][0]
         elif len(wordFreq) > 2:
             mmbool = self.minMax()
